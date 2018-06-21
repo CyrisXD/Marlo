@@ -1,0 +1,47 @@
+{
+  "name": "Marlo",
+  "version": "0.1.0",
+  "description": "Quick toggle tools for Arlo Cameras",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "Marlo",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  },
+  "repository": "https://github.com/CyrisXD/Marlo",
+  "keywords": [
+    "Marlo",
+    "arlo",
+    "cameras",
+    "electron",
+    "nodejs",
+    "api"
+  ],
+  "author": "CyrisXD",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^2.0.0",
+    "electron-builder": "^20.15.1"
+  },
+  "dependencies": {
+    "electron-ga": "^1.0.6",
+    "request": "^2.87.0"
+  }
+}

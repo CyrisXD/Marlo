@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html ng-app="Arlo">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Marlo</title>
+  <link rel="stylesheet" href="styles/angular-material.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+  <!-- Scripts -->
+  <script src="javascript/jquery.min.js"></script>
+  <script src="javascript/angular.min.js"></script>
+  <script src="javascript/angular-animate.min.js"></script>
+  <script src="javascript/angular-aria.min.js"></script>
+  <script src="javascript/angular-material.min.js"></script>
+</head>
+
+<body ng-controller="myCtrl" ng-cloak>
+
+  <div class="arrowContainer">
+    <img src="images/toparrow.png">
+  </div>
+
+
+  <div id="loginRequest" ng-if="!userProfile" ng-init="loginResize()">
+
+    <div class="logincontainer">
+
+      <!-- Toolbar Heading -->
+      <div class="toolbar">
+        <div class="title">Log in with Arlo account</div>
+        <div class="toolbarRightContainer">
+
+          <div class="menu">
+            <md-menu md-position-mode="target-right target">
+              <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+                <i class="fas fa-cog"></i>
+              </md-button>
+              <md-menu-content width="3" class="menuContent">
+
+                <!-- Feedback -->
+                <md-menu-item>
+                  <md-button ng-click="openURL('https://github.com/CyrisXD/Marlo/issues/')">
+                    <div layout="row" flex>
+                      <p flex>Feedback</p>
+                      <i class="fas fa-comments"></i>
+                    </div>
+                  </md-button>
+                </md-menu-item>
+
+                <!-- Quit -->
+                <md-menu-item>
+                  <md-button ng-click="quit()">
+                    <div layout="row" flex>
+                      <p flex>Quit</p>
+                      <i class="fas fa-window-close"></i>
+                    </div>
+                  </md-button>
+                </md-menu-item>
+
+                <!-- Donation -->
+                <md-menu-item style="margin-bottom:-18px;">
+                  <a class="bmc-button" target="_blank" ng-click="openURL('https://www.buymeacoffee.com/FiRmVXOZh')">
+                    <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee">
+                    <span style="margin-left:5px">Buy me a coffee</span>
+                  </a>
+                </md-menu-item>
+
+              </md-menu-content>
+            </md-menu>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="loginForm">
+        <md-content class="md-no-momentum loginMDContent">
+          <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Email</label>
+            <input ng-model="user.name" type="text">
+          </md-input-container>
+
+          <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Password</label>
+            <input ng-model="user.password" type="password">
+          </md-input-container>
+
+          <md-button class="md-raised loginButton" ng-click="logIn(user.name, user.password)">Login</md-button>
+
+          <div class="loginError">{{loginError}}</div>
+
+          <div class="terms">
+            This application is free of charge and provided under the MIT License, by logging in you are agreeing to these
+            <a href="#" ng-click="openURL('https://github.com/CyrisXD/Marlo/blob/master/LICENSE')">terms</a>.
+          </div>
+        </md-content>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- USER PROFILE -->
+  <div id="SuccessLogin" ng-if="userProfile">
+
+    <!-- Toolbar Heading -->
+    <div class="toolbar">
+      <div class="title">
+        <i class="fas fa-video"></i> &nbsp; Marlo</div>
+
+      <div class="toolbarRightContainer">
+        <div class="mode">
+          <div class="activeMode" ng-if="activeMode !== 'Loading'">{{activeMode || 'Unavailable'}}</div>
+          <div class="saving" ng-if="activeMode === 'Loading'">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </div>
+        </div>
+        <div class="menu">
+          <md-menu md-position-mode="target-right target">
+            <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+              <i class="fas fa-cog" id="refresh"></i>
+            </md-button>
+            <md-menu-content width="3" class="menuContent">
+              <!-- Enable at startup -->
+              <md-menu-item>
+
+
+                <md-checkbox ng-model="autostart" ng-checked="autostart" ng-change="addRemoveStartup(autostart)" aria-label="Auto-Start">
+                  Auto-Start
+                </md-checkbox>
+              </md-menu-item>
+
+              <!-- View Releases -->
+              <md-menu-item>
+                <md-button ng-click="openURL('https://github.com/CyrisXD/Marlo/releases')">
+                  <div layout="row" flex>
+                    <p flex>View Releases</p>
+                    <i class="fas fa-cloud-download-alt"></i>
+                  </div>
+                </md-button>
+              </md-menu-item>
+
+              <!-- Feedback -->
+              <md-menu-item>
+                <md-button ng-click="openURL('https://github.com/CyrisXD/Marlo/issues/')">
+                  <div layout="row" flex>
+                    <p flex>Feedback</p>
+                    <i class="fas fa-comments"></i>
+                  </div>
+                </md-button>
+              </md-menu-item>
+
+              <!-- Logout -->
+              <md-menu-item>
+                <md-button ng-click="logOut()">
+                  <div layout="row" flex>
+                    <p flex>Logout</p>
+                    <i class="fas fa-sign-out-alt"></i>
+                  </div>
+                </md-button>
+              </md-menu-item>
+              <!-- Quit -->
+              <md-menu-item>
+                <md-button ng-click="quit()">
+                  <div layout="row" flex>
+                    <p flex>Quit</p>
+                    <i class="fas fa-window-close"></i>
+                  </div>
+                </md-button>
+              </md-menu-item>
+
+              <!-- Donation -->
+              <md-menu-item style="margin-bottom:-18px;">
+                <a class="bmc-button" target="_blank" ng-click="openURL('https://www.buymeacoffee.com/FiRmVXOZh')">
+                  <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee">
+                  <span style="margin-left:5px">Buy me a coffee</span>
+                </a>
+              </md-menu-item>
+
+            </md-menu-content>
+          </md-menu>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body Container -->
+    <div class="container">
+
+      <div class="armButtons">
+        <md-button class="md-raised armdisarm" ng-click="changeMode('mode1')">Arm</md-button>
+        <md-button class="md-raised greenbutton armdisarm" ng-click="changeMode('mode0')">Disarm</md-button>
+      </div>
+
+      <!-- Recording Header -->
+      <div class="recordingHead">
+        <div class="recordingHeading">Latest Recordings</div>
+        <div class="recordRefresh">
+          <i class="fas fa-sync-alt" id="refresh" ng-click="rotateIcon($event)"></i>
+        </div>
+        <div class="clear"></div>
+        <md-divider style="margin-top:10px;"></md-divider>
+      </div>
+
+      <!-- Video Repeat -->
+      <div style="margin: 10px" ng-repeat="recording in library">
+        <div class="dates">{{recording.localCreatedDate | date:'medium'}}</div>
+        <br />
+        <video width="100%" height="auto" controls preload="none" poster="{{recording.presignedThumbnailUrl}}">
+          <source ng-src="{{recording.presignedContentUrl}}" type="video/mp4"> Your browser does not support the video tag.
+        </video>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+
+  <script src="javascript/stash.min.js"></script>
+  <script src="javascript/analytics.js"></script>
+</body>
+
+</html>

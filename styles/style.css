@@ -1,0 +1,366 @@
+*:focus {
+    outline: none;
+}
+
+*::-webkit-scrollbar {
+    width: 0px
+}
+
+html {
+    background-color: transparent !important;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #FFFFFF;
+    background-color: transparent !important;
+}
+
+/* background-color: #eaeaea; */
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+@keyframes blink {
+    /**
+     * At the start of the animation the dot
+     * has an opacity of .2
+     */
+    0% {
+        opacity: .2;
+    }
+    /**
+     * At 20% the dot is fully visible and
+     * then fades out slowly
+     */
+    20% {
+        opacity: 1;
+    }
+    /**
+     * Until it reaches an opacity of .2 and
+     * the animation can start again
+     */
+    100% {
+        opacity: .2;
+    }
+}
+
+.saving span {
+    /**
+     * Use the blink animation, which is defined above
+     */
+    animation-name: blink;
+    /**
+     * The animation should take 1.4 seconds
+     */
+    animation-duration: 1.4s;
+    /**
+     * It will repeat itself forever
+     */
+    animation-iteration-count: infinite;
+    /**
+     * This makes sure that the starting style (opacity: .2)
+     * of the animation is applied before the animation starts.
+     * Otherwise we would see a short flash or would have
+     * to set the default styling of the dots to the same
+     * as the animation. Same applies for the ending styles.
+     */
+    animation-fill-mode: both;
+}
+
+.saving span:nth-child(2) {
+    /**
+     * Starts the animation of the third dot
+     * with a delay of .2s, otherwise all dots
+     * would animate at the same time
+     */
+    animation-delay: .2s;
+}
+
+.saving span:nth-child(3) {
+    /**
+     * Starts the animation of the third dot
+     * with a delay of .4s, otherwise all dots
+     * would animate at the same time
+     */
+    animation-delay: .4s;
+}
+
+.saving {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.clear {
+    clear: both;
+    width: 100%;
+}
+
+.activeMode {
+    display: inline-block;
+}
+
+.toolbar {
+    padding: 12px 20px;
+    background-color: #15a64e;
+    font-weight: bold;
+    position: fixed;
+    display: block;
+    width: 100%;
+    z-index: 99;
+    font-weight: 100;
+    top: 11px;
+    left: 0px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.mode {
+    float: left;
+}
+
+.title {
+    float: left;
+    font-family: "Roboto", Helvetica Neue, sans-serif;
+}
+
+.container {
+    padding-top: 25px;
+    background-color: #eaeaea;
+}
+
+.logincontainer {
+    background-color: #eaeaea;
+    border-radius: 0px 0px 5px 5px;
+    overflow-y: scroll;
+    width: 300px;
+    height: 330px;
+    position: relative;
+    top: 20px;
+}
+
+#SuccessLogin {
+    overflow-y: scroll;
+    width: 300px;
+    height: 390px;
+    position: relative;
+    top: 20px;
+}
+
+.armButtons {
+    padding-top: 24px;
+    padding-bottom: 12px;
+}
+
+#SuccessLogin::-webkit-scrollbar {
+    width: 0px
+}
+
+.armdisarm {
+    width: 280px;
+}
+
+.greenbutton {
+    background-color: #15a64e !important;
+    color: white !important;
+}
+
+.recordingHead {
+    width: 280px;
+    position: relative;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.recordingHeading {
+    float: left;
+    color: grey;
+}
+
+.recordRefresh {
+    color: grey;
+    float: right;
+    font-family: "Roboto", Helvetica Neue, sans-serif;
+}
+
+.dates {
+    color: grey;
+    font-size: 11px;
+    padding-left: 5px;
+    display: inline-block;
+    text-align: right;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#loginRequest {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+md-content {
+    background-color: transparent !important;
+    margin: 10px;
+}
+
+md-input-container {
+    margin: 0;
+}
+
+.loginForm {
+    margin: 50px auto 0px auto;
+    position: relative;
+    width: 95%;
+}
+
+.loginError {
+    width: 98%;
+    margin: 25px auto;
+    position: relative;
+    color: red;
+    text-justify: distribute;
+    font-size: 11px;
+}
+
+.loginButton {
+    width: 100px;
+    background-color: #15a64e !important;
+    color: white !important;
+    margin: 2px;
+}
+
+.terms {
+    width: 98%;
+    margin: 25px auto;
+    position: relative;
+    color: grey;
+    text-justify: distribute;
+    font-size: 11px;
+}
+
+.terms a {
+    color: grey;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #15a64e;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused label {
+    color: #15a64e;
+}
+
+.loginMDContent {
+    padding-top: 20px;
+}
+
+.arrowContainer {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    top: -5px;
+}
+
+.toolbarRightContainer {
+    float: right;
+}
+
+.menu {
+    float:right;
+}
+
+.menu .md-button.md-icon-button {
+    margin: 0 0px;
+    height: 15px;
+    min-width: 0;
+    line-height: 0px;
+    padding: 0px;
+    width: 17px;
+    /* border-radius: 50%; */
+    margin-left: 15px;
+    font-size: 15px;
+}
+
+.menu .md-button {
+    min-height:100%;
+}
+
+.menuContent .layout-row .fas {
+    margin: 12px 0;
+    padding: 0px;
+}
+
+md-checkbox .md-container {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    left: auto;
+    right: 16px;
+}
+
+md-checkbox .md-label {
+    margin-left:0px;
+}
+
+md-checkbox.md-checked .md-ink-ripple {
+    color: #15a64e !important;
+}
+
+md-checkbox.md-checked .md-icon {
+    background-color: #15a64e;
+}
+
+.bmc-button img {
+    width: 27px !important;
+    margin-bottom: 1px !important;
+    box-shadow: none !important;
+    border: none !important;
+    vertical-align: middle !important;
+  }
+
+  .bmc-button {
+    line-height: 36px !important;
+    height: 37px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    color: #000000 !important;
+    background-color: #FFFFFF !important;
+    border-radius: 3px !important;
+    border: 1px solid transparent !important;
+    padding: 1px 9px !important;
+    font-size: 23px !important;
+    letter-spacing: 0.6px !important;
+    ;
+    box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+    -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+    margin: 0 auto !important;
+    font-family: 'Cookie', cursive !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    -o-transition: 0.3s all linear !important;
+    -webkit-transition: 0.3s all linear !important;
+    -moz-transition: 0.3s all linear !important;
+    -ms-transition: 0.3s all linear !important;
+    transition: 0.3s all linear !important;
+  }
+
+  .bmc-button:hover,
+  .bmc-button:active,
+  .bmc-button:focus {
+    -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+    text-decoration: none !important;
+    box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+    opacity: 0.85 !important;
+    color: #000000 !important;
+    cursor: pointer;
+  }
