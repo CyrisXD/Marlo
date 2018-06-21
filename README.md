@@ -25,7 +25,7 @@ Once installed you will need to log in with your Arlo account. You can use your 
 Make sure your alternative account has all permissions to your devices in order for Marlo to see them. 
 
 
-#Known Issues
+# Known Issues
 
 MacOS may prevent the app from starting because it is currently not code signed through Apple. 
 
