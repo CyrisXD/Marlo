@@ -12,7 +12,6 @@ You will also be able to view and playback your library of previously recorded c
 
 
 # Installation
-**Coming Soon**
 
 To download the latest version of Marlo visit the [releases](https://github.com/CyrisXD/Marlo/releases) page. 
 
