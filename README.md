@@ -50,6 +50,10 @@ Start the app
 2. Possibly better design
 3. Enable automatic updates through Electron (Requires Apple Developer account)
 
+# Note
+
+This is not an official Arlo application, and has no affiliation with NetGear or Arlo. 
+
 # Support
 
 You can support Marlo by buying me a coffee below. Donations will be going to an Apple Developer Account so I'll be able to enable automatic updates on Marlo with code signing. 
