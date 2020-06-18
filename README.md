@@ -1,5 +1,7 @@
 ![alt text](https://i.imgur.com/dJKmriC.png "Marlo - Beta") 
 
+# Notice
+This project is longer maintained but I am happy to accept any pull requests.
 
 Marlo is an open source and free MacOS tray app to directly control your Arlo Security Cameras. 
 
