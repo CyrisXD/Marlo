@@ -37,7 +37,7 @@
   "author": "CyrisXD",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^2.0.8",
+    "electron": "^11.5.0",
     "electron-builder": "^20.15.1"
   },
   "dependencies": {
